@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .dot {
+      height: 100px;
+      width: 100px;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 50%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .clock {
+      text-align: center;
+    }
+
+    .pp {
+      text-align: center;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    .diwali-container {
+      display: none; /* Initially hide the Diwali greeting */
+      margin-top: 20px;
+    }
+
+    h1 {
+      color: #f39c12;
+      animation: fadeIn 1s forwards; /* Show the greeting with animation */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="row begin-countdown">
+    <div class="col-md-12 text-center">
+      <div class="dot" style="position: center">
+        <h3 id="pageBeginCountdownText" class="clock">10</h3>
+        <p class="pp">Seconds</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    ProgressCountdown(10, "pageBeginCountdownText");
+
+    function ProgressCountdown(timeleft, text) {
+      return new Promise((resolve, reject) => {
+        var countdownTimer = setInterval(() => {
+          timeleft--;
+
+          document.getElementById(text).textContent = timeleft;
+
+          if (timeleft <= 0) {
+            clearInterval(countdownTimer);
+            resolve(true);
+            document.querySelector('.begin-countdown').style.display = 'none'; // Hides the countdown timer
+            showDiwaliGreetings(); // Show Diwali greeting after countdown
+          }
+        }, 1000);
+      });
+    }
+
+    function showDiwaliGreetings() {
+      const diwaliContainer = document.querySelector(".diwali-container");
+      diwaliContainer.style.display = "block";
+      appendCanvas(); // Append Canvas and App.js after the countdown
+    }
+
+    function appendCanvas() {
+      const canvas = document.createElement("canvas");
+      canvas.id = "Canvas";
+      document.body.appendChild(canvas);
+
+      const script = document.createElement("script");
+      script.src = "app.js";
+      document.body.appendChild(script);
+    }
+  </script>
+
+  <div class="diwali-container">
+    <h1>Happy Diwali!</h1>
+    <div id="countdown"></div>
+  </div>
+
+  <script>
+    const diwaliDate = new Date("2023-10-24T00:00:00").getTime();
+    const countdownDisplay = document.getElementById("countdown");
+
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = diwaliDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        countdownDisplay.innerHTML = "Happy Diwali!";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownDisplay.innerHTML = `
+          <h2>Countdown to Diwali</h2>
+          <p>${days}d ${hours}h ${minutes}m ${seconds}s</p>
+        `;
+      }
+    }, 1000);
+  </script>
+</body>
+  </html>
