@@ -2,7 +2,7 @@
   "name": "diwali-greetings-app",
   "version": "1.0.0",
   "description": "A Node.js server for Diwali greetings canvas animation.",
-  "main": "Ayush.html",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
     "canvas": "^2.8.0"
