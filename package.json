@@ -4,17 +4,15 @@
   "description": "A Node.js server for Diwali greetings canvas animation.",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1", // Add the required version of Express
-    "canvas": "^2.8.0" // Add the required version of canvas (for server-side canvas manipulation)
-    // Add other dependencies as needed for your application
+    "express": "^4.17.1",
+    "canvas": "^2.8.0"
   },
   "engines": {
-    "node": "14.x" // Specify the version of Node.js
+    "node": "14.x"
   },
   "scripts": {
-    "start": "node index.js" // Specify the starting command for your server (change 'index.js' to your server file name)
-    // Add other scripts as needed for your application
+    "start": "node index.js"
   },
   "author": "Ayush",
-  "license": "MIT" // Specify your preferred license
+  "license": "MIT"
 }
