@@ -1,0 +1,19 @@
+{
+  "name": "Diwali Greetings App",
+  "description": "A Node.js server for Diwali greetings canvas animation.",
+  "env": {
+    "NODE_ENV": {
+      "description": "Node Environment",
+      "value": "production"
+    }
+    // Add any other environment variables your app might need
+  },
+  "addons": [
+    // Add any required add-ons (e.g., database, logging, etc.) if applicable
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
